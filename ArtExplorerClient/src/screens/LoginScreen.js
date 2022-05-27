@@ -5,8 +5,13 @@ export default function LoginPage(){
     return(
         <View style = {styles.container}>
             <SafeAreaView style = {styles.header}>
+            <Image 
+                    style = {styles.logo}
+                    source={require('../utils/placeholderlogo.png')}
+                    resizeMode='stretch'
+                />
             </SafeAreaView>
-
+            
             <View style = {styles.footer}>
                 <Text style={styles.welcome_text}>
                     Welcome on ArtExplorer!
@@ -58,7 +63,7 @@ export default function LoginPage(){
       alignItems:'center'
     },
     logo:{
-        marginBottom:250
+        marginTop:80
     },
     welcome_text:{
         fontSize:30,
