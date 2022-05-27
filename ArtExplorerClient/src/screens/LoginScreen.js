@@ -2,29 +2,23 @@
 import {StyleSheet, Text, TextInput, View, Pressable, Image, Dimensions, Button, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
 export default function LoginPage(){
-    const [text, setText] = React.useState("");
     return(
         <View style = {styles.container}>
             <SafeAreaView style = {styles.header}>
-                <Image 
-                    style = {styles.logo}
-                    source={require('../utils/logo.png')}
-                    resizeMode='stretch'
-                />
             </SafeAreaView>
 
             <View style = {styles.footer}>
                 <Text style={styles.welcome_text}>
-                    Bine ai venit pe CommuniTIM!
+                    Welcome on ArtExplorer!
                 </Text >
-                <Text style = {styles.fieldText}>utilizator:</Text>
+                <Text style = {styles.fieldText}>username:</Text>
                 <View style = {styles.usernameFieldContainer}>
                     <TextInput
                     style={styles.usernameField}
                     placeholder='...'
                     />
                 </View>
-                <Text style = {styles.fieldText}>parolă:</Text>
+                <Text style = {styles.fieldText}>password:</Text>
                 <View style = {styles.passwordFieldContainer}>
                     <TextInput
                     style={styles.passwordField}
@@ -34,7 +28,7 @@ export default function LoginPage(){
                 </View>
                 <Pressable style = {styles.loginButton}
                 >
-                    <Text style = {styles.buttonText}>loghează-te</Text>
+                    <Text style = {styles.buttonText}>Sign In</Text>
                 </Pressable>
               </View>
           </View>
@@ -120,7 +114,7 @@ export default function LoginPage(){
         paddingHorizontal:32,
         borderRadius:6,
         elevation:3,
-        backgroundColor:"#9933ff"
+        backgroundColor:"#AA1945"
       },
       buttonText:{
         color:"#fff", 
