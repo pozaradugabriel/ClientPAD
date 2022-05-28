@@ -15,18 +15,16 @@ export default function App() {
         }
       }>
         <Stack.Screen
-          name="singup_screen"
-          component={SignupScreen}
-        />
-
-        <Stack.Screen
           name="login_screen"
           component={LoginScreen}
         />
-
         <Stack.Screen
-          name="home_screen"
-          component={HomeScreen}
+            name="home_screen"
+            component={HomeScreen}
+        />
+        <Stack.Screen
+          name="singup_screen"
+          component={SignupScreen}
         />
         
       </Stack.Navigator>
