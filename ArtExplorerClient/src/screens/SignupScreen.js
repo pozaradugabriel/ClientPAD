@@ -23,7 +23,8 @@ export default function SignupScreen(){
                     <TextInput
                     style={styles.usernameField}
                     placeholder='...'
-                    onSubmitEditing={(value) => setName(value.nativeEvent.text)}
+                    onChangeText={onChangeName}
+                    value={name}
                     />
                 </View>
 
@@ -33,7 +34,8 @@ export default function SignupScreen(){
                     style={styles.passwordField}
                     placeholder='...'
                     secureTextEntry
-                    onSubmitEditing={(value) => setPassword(value.nativeEvent.text)}
+                    onChangeText={onChangePassword}
+                    value={password}
                     />
                 </View>
 
@@ -42,7 +44,8 @@ export default function SignupScreen(){
                     <TextInput
                     style={styles.passwordField}
                     placeholder='...'
-                    onSubmitEditing={(value) => setEmail(value.nativeEvent.text)}
+                    onChangeText={onChangeEmail}
+                    value={email}
                     />
                 </View>
 
