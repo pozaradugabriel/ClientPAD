@@ -1,6 +1,9 @@
 import {StyleSheet,Text,View,Pressable,Image, Dimensions,Button,SafeAreaView,TextInput} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 export default function SignupScreen(){
+    const [name,setName] = useState("");
+    const [password,setPassword] = useState("");
+    const [email,setEmail] = useState("");
     return(
         <View style= {styles.container}>
             <SafeAreaView style={styles.header}>
@@ -20,6 +23,8 @@ export default function SignupScreen(){
                     <TextInput
                     style={styles.usernameField}
                     placeholder='...'
+                    onChangeText={onChangeName}
+                    value={name}
                     />
                 </View>
 
@@ -29,6 +34,8 @@ export default function SignupScreen(){
                     style={styles.passwordField}
                     placeholder='...'
                     secureTextEntry
+                    onChangeText={onChangePassword}
+                    value={password}
                     />
                 </View>
 
@@ -37,6 +44,8 @@ export default function SignupScreen(){
                     <TextInput
                     style={styles.passwordField}
                     placeholder='...'
+                    onChangeText={onChangeEmail}
+                    value={email}
                     />
                 </View>
 
@@ -44,6 +53,8 @@ export default function SignupScreen(){
                 >
                     <Text style = {styles.buttonText}>Create</Text>
                 </Pressable>
+
+                <Text> {name} {password} {email}</Text>
             </View>
         </View>
     )
