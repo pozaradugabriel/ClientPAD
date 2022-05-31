@@ -1,9 +1,33 @@
 import {StyleSheet,Text,View,Pressable,Image, Dimensions,Button,SafeAreaView,TextInput} from 'react-native';
 import React, {useState} from 'react';
-export default function SignupScreen(){
-    const [name,setName] = useState("");
-    const [password,setPassword] = useState("");
-    const [email,setEmail] = useState("");
+import axios from "axios";
+export default function SignupScreen({navigation}){
+    const [name,onChangeName] = useState("");
+    const [password,onChangePassword] = useState("");
+    const [email,onChangeEmail] = useState("");
+
+    const goToLoginPage = () =>{
+      navigation.navigate('login_screen');
+    }
+
+    const submitCredentials = async (event) =>{
+      try {
+        const response = await axios.post('http://192.168.0.213:8080/api/register', {
+          username:name,
+          password:password,
+          email:email
+        });
+        if (response.status === 201) {
+          alert("You have created the account succesfully.");
+          goToLoginPage();
+        } else {
+          throw new Error("An error has occurred");
+        }
+      } catch (error) {
+        alert("An error has occurred" +error);
+      }
+    };
+
     return(
         <View style= {styles.container}>
             <SafeAreaView style={styles.header}>
@@ -51,7 +75,7 @@ export default function SignupScreen(){
 
                 <Pressable style = {styles.loginButton}
                 >
-                    <Text style = {styles.buttonText}>Create</Text>
+                    <Text onPress={submitCredentials} style = {styles.buttonText}>Create</Text>
                 </Pressable>
 
                 <Text> {name} {password} {email}</Text>

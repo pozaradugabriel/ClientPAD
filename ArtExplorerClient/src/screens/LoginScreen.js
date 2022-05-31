@@ -2,8 +2,8 @@
 import {StyleSheet, Text, TextInput, View, Pressable, Image, Dimensions, Button, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
 export default function LoginScreen(){
-    const [name,setName] = useState("");
-    const [password,setPassword] = useState("");
+    const [name,onChangeName] = useState("");
+    const [password,onChangePassword] = useState("");
     return(
         <View style = {styles.container}>
             <SafeAreaView style = {styles.header}>
