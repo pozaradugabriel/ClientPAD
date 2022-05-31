@@ -1,21 +1,20 @@
-
-import {StyleSheet, Text, TextInput, View, Pressable, Image, Dimensions, Button, SafeAreaView} from 'react-native';
-import React, {useState} from 'react';
-export default function LoginScreen(){
+import {StyleSheet,Text,View,Pressable,Image, Dimensions,Button,SafeAreaView,TextInput} from 'react-native';
+import React from 'react';
+export default function SignupScreen(){
     return(
-        <View style = {styles.container}>
-            <SafeAreaView style = {styles.header}>
-            <Image 
-                    style = {styles.logo}
+        <View style= {styles.container}>
+            <SafeAreaView style={styles.header}>
+                <Image 
+                    style={styles.logo}
                     source={require('../utils/placeholderlogo.png')}
                     resizeMode='stretch'
                 />
             </SafeAreaView>
-            
-            <View style = {styles.footer}>
+
+            <View style={styles.footer}>
                 <Text style={styles.welcome_text}>
-                    Welcome on ArtExplorer!
-                </Text >
+                    Create an account.
+                </Text>
                 <Text style = {styles.fieldText}>username:</Text>
                 <View style = {styles.usernameFieldContainer}>
                     <TextInput
@@ -23,6 +22,7 @@ export default function LoginScreen(){
                     placeholder='...'
                     />
                 </View>
+
                 <Text style = {styles.fieldText}>password:</Text>
                 <View style = {styles.passwordFieldContainer}>
                     <TextInput
@@ -31,17 +31,25 @@ export default function LoginScreen(){
                     secureTextEntry
                     />
                 </View>
+
+                <Text style = {styles.fieldText}>email:</Text>
+                <View style = {styles.mailFieldContainer}>
+                    <TextInput
+                    style={styles.passwordField}
+                    placeholder='...'
+                    />
+                </View>
+
                 <Pressable style = {styles.loginButton}
                 >
-                    <Text style = {styles.buttonText}>Sign In</Text>
+                    <Text style = {styles.buttonText}>Create</Text>
                 </Pressable>
-              </View>
-          </View>
+            </View>
+        </View>
     )
 }
-  const {height} = Dimensions.get('window');
+
   const windowWidth = Dimensions.get('window').width;
-  const logo_height = height*0.28;
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -60,59 +68,64 @@ export default function LoginScreen(){
       borderTopRightRadius: 30,
       paddingVertical:50,
       paddingHorizontal:30,
-      alignItems:'center'
+      alignItems:'center',
     },
     logo:{
-        marginTop:80
+        marginBottom:25
     },
     welcome_text:{
         fontSize:30,
         fontWeight:'bold',
-        marginBottom:40
+        marginBottom:30,
+        color:"#000"
       },
       usernameField:{
         fontSize:20,
-        color:'#696969',
-        marginLeft:10,
-        marginTop:8
       },
       passwordField:{
-        fontSize:20,
-        borderTopLeftRadius:50,
-        color:'#696969',
-        marginLeft:10,
-        marginTop:8
+        fontSize:20
       },
       usernameFieldContainer:{
-        borderLeftWidth:3,
-        borderRightWidth:3,
-        borderTopWidth:3,
-        borderBottomWidth:3,
-        borderRadius:8,
-        width:windowWidth-50,
-        height:50,
-        marginBottom:50,
-        borderColor:'#696969'
-    },
+          borderLeftWidth:3,
+          borderRightWidth:3,
+          borderTopWidth:3,
+          borderBottomWidth:3,
+          borderColor:'#696969',
+          width:windowWidth-50,
+          height:40,
+          marginBottom:25,
+          borderRadius:8
+      },
       passwordFieldContainer:{
         borderLeftWidth:3,
         borderRightWidth:3,
         borderTopWidth:3,
         borderBottomWidth:3,
-        borderRadius:8,
+        borderColor:'#696969',
         width:windowWidth-50,
-        height:50,
-        borderColor:'#696969'
-     },
+        height:40,
+        marginBottom:25,
+        borderRadius:8
+    },
+    mailFieldContainer:{
+        borderLeftWidth:3,
+        borderRightWidth:3,
+        borderTopWidth:3,
+        borderBottomWidth:3,
+        borderColor:'#696969',
+        width:windowWidth-50,
+        height:40,
+        borderRadius:8
+    },
       fieldText:{
-        color:'#696969',
-        fontSize:20,
-        fontWeight:'bold',
-        marginBottom:15,
-        alignSelf: 'flex-start'
+          color:'#696969',
+          fontSize:15,
+          fontWeight:'bold',
+          marginBottom:15,
+          alignSelf:'flex-start'
       },
       loginButton:{
-        marginTop:50,
+        marginTop:35,
         alignItems:'center',
         justifyContent:'center',
         paddingVertical:12,
@@ -125,5 +138,5 @@ export default function LoginScreen(){
         color:"#fff", 
         fontWeight:'bold',
         fontSize:20,
-      }
-  });
+      },
+})
