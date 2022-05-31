@@ -1,9 +1,32 @@
 
 import {StyleSheet, Text, TextInput, View, Pressable, Image, Dimensions, Button, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
-export default function LoginScreen(){
+import axios from "axios";
+import {Buffer} from "buffer";
+export default function LoginScreen({navigation}){
     const [name,onChangeName] = useState("");
     const [password,onChangePassword] = useState("");
+    const token = Buffer.from(`${name}:${password}`, 'utf8').toString('base64')
+    const goToHomePage = () =>{
+      navigation.navigate('home_screen');
+    }
+    const submitCredentials = async (event) =>{
+      try {
+        const response = await axios.get('http://192.168.0.213:8080/api/login', {
+          headers:{
+            'Authorization':`Basic ${token}` ,
+          }
+        });
+        if (response.status === 200) {
+          goToHomePage();
+          alert("You have logged in succesfully.");
+        } else {
+          throw new Error("An error has occurred");
+        }
+      } catch (error) {
+        alert("Username or password incorrect");
+      }
+    };
     return(
         <View style = {styles.container}>
             <SafeAreaView style = {styles.header}>
@@ -39,7 +62,7 @@ export default function LoginScreen(){
                 </View>
                 <Pressable style = {styles.loginButton}
                 >
-                    <Text style = {styles.buttonText}>Sign In</Text>
+                    <Text onPress={submitCredentials} style = {styles.buttonText}>Sign In</Text>
                 </Pressable>
               </View>
           </View>
