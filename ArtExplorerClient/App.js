@@ -14,15 +14,15 @@ export default function App() {
           headerShown:false
         }
       }>
-        <Stack.Screen
-          name="singup_screen"
-          component={SignupScreen}
-        />
 
-        
         <Stack.Screen
             name="home_screen"
             component={HomeScreen}
+        />
+        
+        <Stack.Screen
+          name="singup_screen"
+          component={SignupScreen}
         />
 
         <Stack.Screen
