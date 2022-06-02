@@ -10,9 +10,12 @@ export default function LoginScreen({navigation}){
     const goToHomePage = () =>{
       navigation.navigate('home_screen');
     }
+    const goToRegister = () =>{
+      navigation.navigate('singup_screen');
+    }
     const submitCredentials = async (event) =>{
       try {
-        const response = await axios.get('http://192.168.0.213:8080/api/login', {
+        const response = await axios.get('http://localhost:8080/api/login', {
           headers:{
             'Authorization':`Basic ${token}` ,
           }
@@ -63,6 +66,10 @@ export default function LoginScreen({navigation}){
                 <Pressable style = {styles.loginButton}
                 >
                     <Text onPress={submitCredentials} style = {styles.buttonText}>Sign In</Text>
+                </Pressable>
+                <Pressable style = {styles.loginButton}
+                >
+                    <Text onPress={goToRegister} style = {styles.buttonText}>Regisrer</Text>
                 </Pressable>
               </View>
           </View>

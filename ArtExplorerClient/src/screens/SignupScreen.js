@@ -12,7 +12,7 @@ export default function SignupScreen({navigation}){
 
     const submitCredentials = async (event) =>{
       try {
-        const response = await axios.post('http://192.168.0.213:8080/api/register', {
+        const response = await axios.post('http://localhost:8080/api/register', {
           username:name,
           password:password,
           email:email
@@ -78,7 +78,12 @@ export default function SignupScreen({navigation}){
                     <Text onPress={submitCredentials} style = {styles.buttonText}>Create</Text>
                 </Pressable>
 
-                <Text> {name} {password} {email}</Text>
+                <Pressable style = {styles.loginButton}
+                >
+                    <Text onPress={goToLoginPage} style = {styles.buttonText}>Log in</Text>
+                </Pressable>
+
+                {/* <Text> {name} {password} {email}</Text> */}
             </View>
         </View>
     )

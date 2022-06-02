@@ -6,12 +6,11 @@ import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 
-
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   
   const [museums,setMuseums] = useState([]); 
     useEffect(() =>{
-      axios.get('http://192.168.0.213:8080/api/museum/get/all')
+      axios.get('http://localhost:8080/api/museum/get/all')
         .then(res=>{
           console.log(res);
           setMuseums(res.data);
@@ -36,10 +35,16 @@ export default function HomeScreen() {
       alert(error);
     }
   };*/
+
+  const goToDetailsPage = (museumId) =>{
+    navigation.navigate('details_screen', {
+      museumId: museumId
+    });
+  }
+
   return (
-    
     <View style={styles.container}>
-      
+
       <MapView style={styles.map} 
         initialRegion={{
           latitude: 45.760696,
@@ -56,12 +61,17 @@ export default function HomeScreen() {
               longitude:museums[i].longitude
             }}
             title={museums[i].name}
-            description={museums[i].description + "\nType: " + museums[i]}
+            //description={museums[i].description + "\nType: " + museums[i]}
+            onPress={() => {
+              navigation.navigate('details_screen', {
+                museumId: museums[i].id,
+              });}}
             pinColor={"#ffd1dc"}
             />
             )
         })}
-      </MapView> 
+      </MapView>
+      <Button title="Log Off" onPress={() => navigation.navigate('login_screen')} />
       </View>
   );
 }
@@ -77,7 +87,4 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  buton:{
-    
-  }
 });
